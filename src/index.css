@@ -1,0 +1,233 @@
+/*
+ * index.css — tokens de design da plataforma Volta Express (DS1).
+ * Cores alinhadas à landing voltaexpressbrasil.com.br: laranja #fe5b3d, âmbar #ffac38, azul #104ac8, grafite #1e293b.
+ * Tons usados em texto e botões foram escurecidos para contraste WCAG AA (≥ 4,5:1 com branco).
+ */
+/* v3 (T4.3): mesma fonte da landing e do Hub (Poppins). */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 20% 98%;
+    --foreground: 217 33% 17%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 217 33% 17%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 217 33% 17%;
+
+    --primary: 221 85% 42%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 25% 93%;
+    --secondary-foreground: 215 70% 15%;
+
+    --muted: 210 20% 95%;
+    --muted-foreground: 215 15% 45%;
+
+    --accent: 10 85% 46%;
+    --accent-foreground: 0 0% 100%;
+
+    --success: 145 63% 32%;
+    --success-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 42%; /* v3: 6:1 com branco (antes 3,8:1, abaixo do AA em texto) */
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214 25% 88%;
+    --input: 214 25% 88%;
+    --ring: 10 85% 46%;
+
+    --radius: 0.75rem;
+
+    --brand-orange: 9 99% 62%;
+    --brand-amber: 35 100% 61%;
+    --brand-blue: 221 85% 42%;
+    --whatsapp: 142 72% 29%; /* #15803d, mesmo verde da landing (5,02:1 com branco) */
+    --whatsapp-foreground: 0 0% 100%;
+
+    --sidebar-background: 217 33% 12%;
+    --sidebar-foreground: 210 20% 95%;
+    --sidebar-primary: 10 85% 46%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 215 60% 18%;
+    --sidebar-accent-foreground: 210 20% 95%;
+    --sidebar-border: 215 50% 25%;
+    --sidebar-ring: 10 85% 46%;
+
+    --gradient-hero: linear-gradient(
+      135deg,
+      hsl(217 33% 12%) 0%,
+      hsl(221 55% 20%) 50%,
+      hsl(221 70% 30%) 100%
+    );
+    --gradient-accent: linear-gradient(
+      135deg,
+      hsl(9 99% 62%) 0%,
+      hsl(35 100% 61%) 100%
+    );
+    --gradient-card: linear-gradient(
+      180deg,
+      hsl(0 0% 100%) 0%,
+      hsl(210 20% 97%) 100%
+    );
+    --shadow-card: 0 4px 24px -4px hsl(217 33% 12% / 0.08);
+    --shadow-elevated: 0 12px 40px -8px hsl(217 33% 12% / 0.15);
+  }
+
+  .dark {
+    --background: 215 70% 6%;
+    --foreground: 210 20% 95%;
+
+    --card: 215 60% 10%;
+    --card-foreground: 210 20% 95%;
+
+    --popover: 215 60% 10%;
+    --popover-foreground: 210 20% 95%;
+
+    --primary: 221 85% 55%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 215 50% 15%;
+    --secondary-foreground: 210 20% 95%;
+
+    --muted: 215 40% 15%;
+    --muted-foreground: 215 20% 60%;
+
+    --accent: 10 85% 46%;
+    --accent-foreground: 0 0% 100%;
+
+    --success: 145 60% 40%;
+    --success-foreground: 0 0% 100%;
+
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 215 40% 18%;
+    --input: 215 40% 18%;
+    --ring: 10 85% 46%;
+
+    --sidebar-background: 215 70% 6%;
+    --sidebar-foreground: 210 20% 95%;
+    --sidebar-primary: 10 85% 46%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 215 50% 12%;
+    --sidebar-accent-foreground: 210 20% 95%;
+    --sidebar-border: 215 40% 15%;
+    --sidebar-ring: 10 85% 46%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading font-bold tracking-tight;
+  }
+}
+
+@layer utilities {
+  .text-gradient-accent {
+    background: var(--gradient-accent);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .bg-gradient-hero {
+    background: var(--gradient-hero);
+  }
+
+  .bg-gradient-accent {
+    background: var(--gradient-accent);
+  }
+
+  .bg-gradient-card {
+    background: var(--gradient-card);
+  }
+
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+
+  .shadow-elevated {
+    box-shadow: var(--shadow-elevated);
+  }
+}
+
+@keyframes loading {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(60%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* card de Matching */
+@keyframes custom-pulse {
+  0% {
+    box-shadow: 0 0 0 0 hsl(var(--accent) / 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 15px hsl(var(--accent) / 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 hsl(var(--accent) / 0);
+  }
+}
+
+.pulse-animation {
+  animation: custom-pulse 2s infinite;
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Fim de index.css */
